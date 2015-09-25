@@ -147,7 +147,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.c" />
-    <ClCompile Include="umpire.c" />
+    <ClCompile Include="ballUmpire.c" />
+    <ClCompile Include="pitcher.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ballUmpire.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
