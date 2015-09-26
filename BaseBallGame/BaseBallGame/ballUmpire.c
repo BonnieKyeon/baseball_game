@@ -3,14 +3,14 @@
 #include <time.h>
 #include "ballUmpire.h"
 
-int mBallNumArr[BALL_ARR_LENGTH] = { -1, };
+int mNumBallArr[BALL_ARR_LENGTH] = { -1, };
 
-int isValidNumber(int num) {
+int isValidNumBall(int num) {
 	int ret = 1;
 	int i;
 
 	for (i = 0; i < BALL_ARR_LENGTH; i++) {
-		if (*(mBallNumArr + i) == num) {
+		if (*(mNumBallArr + i) == num) {
 			ret = 0;
 		}
 	}
@@ -24,10 +24,10 @@ void setupNewGame() {
 
 	for (i = 0; i < BALL_ARR_LENGTH; i++) {
 		int num = rand() % MAX_BALL_NUM;
-		while (isValidNumber(num) == 0) {
+		while (isValidNumBall(num) == 0) {
 			num = rand() % MAX_BALL_NUM;
 		}
-		*(mBallNumArr + i) = num;
+		*(mNumBallArr + i) = num;
 	}
 }
 
@@ -44,17 +44,29 @@ void printResult(int *strikeCount, int *ballCount) {
 		printf("Out!!");
 	}
 
-	printf("\n");
+	printf("\n\n");
 }
 
-int umpireBallNumArr(int ballNumArr[BALL_ARR_LENGTH], int *strikeCount, int *ballCount) {
+int umpireNumBallArr(int *numBallArr, int *strikeCount, int *ballCount) {
 	int ret = ERROR;
-	if (mBallNumArr == -1) {
+	if (mNumBallArr == -1) {
 		printf("게임 준비가 되지않았습니다. setupNewGame() 을 호출해주세요");
 	}
 	else {
-		//ret = SUCCESS;
+		int i;
+		int j;
+		ret = SUCCESS;
 
+		for (i = 0; i < BALL_ARR_LENGTH; i++) {
+			for (j = 0; j < BALL_ARR_LENGTH; j++) {
+				if (*(numBallArr + i) == *(mNumBallArr + j)) {
+					if (i == j)
+						*strikeCount = *(strikeCount) + 1;
+					else
+						*ballCount = *(ballCount) + 1;
+				}
+			}
+		}
 
 		printResult(strikeCount, ballCount);
 	}
