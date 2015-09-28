@@ -4,9 +4,8 @@
 #define ERROR -1
 #define SUCCESS 0
 
-/* 심판이 새 게임을 준비. 볼 숫자를 다시 세팅. */
-void setupNewGame();
+/* 답으로 쓸 int포인터배열을 받아서 값을 채운다. */
+void getNewNumBallArr(int *numBallArr);
 
-/*	숫자와 자리를 미리 set 해준 mBallNumArr 와 비교한다.
-	return 값이 ERROR 와 같으면 에러. */
-int umpireNumBallArr(int ballNumArr[BALL_ARR_LENGTH], int *strikeCount, int *ballCount);
+/*	두 int 배열의 숫자와 자리를 비교해서 strikeCount와 ballCount 에 값을 바꿔주고, 출력한다 */
+int umpireNumBallArr(int *numBallArr1, int *numBallArr2, int *strikeCount, int *ballCount);
