@@ -146,12 +146,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="catcher.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="ballUmpire.c" />
     <ClCompile Include="pitcher.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ballUmpire.h" />
+    <ClInclude Include="catcher.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
