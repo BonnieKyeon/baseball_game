@@ -7,18 +7,21 @@
 #define NUM_BALL_ARR_LENGTH 3
 
 void printUsage();
+void printUsageAIMode();
 void startNewGame();
 
 int main(int argc, char* argv[]) {
-	printUsage();
 
 	int gameMode;
+
+	printf("숫자 야구게임 \n\n");
 	printf("게임 모드를 입력해주세요 \n");
 	printf("0 : 컴퓨터가 심판, 유저가 투수, 1: 유저가 심판, 컴퓨터가 투수 \n");
 	
 	scanf_s("%1d", &gameMode);
 	printf("\n");
 	if (gameMode == 0) {
+		printUsage();
 		char c = 'y';
 		while (c == 'y' || c == 'Y') {
 			startNewGame();
@@ -30,7 +33,7 @@ int main(int argc, char* argv[]) {
 		}
 	}
 	else if(gameMode == 1){ //ai
-
+		printUsageAIMode();
 	}
 
 	system("pause");
@@ -78,10 +81,19 @@ void startNewGame() {
 }
 
 void printUsage() {
-	printf("숫자 야구게임! \n");
+	printf("컴퓨터가 심판, 유저가 투수 \n");
 	printf("제한된 기회 (%d회) 내에 심판으로부터 3 Strike 를 얻어내면 승리 \n", MAX_CHANCE_COUNT);
 	printf("-------- \n");
 	printf("입력 포맷 : 숫자1 공백 숫자2 공백 숫자3\n");
 	printf("예시 : 3 1 9\n");
+	printf("-------- \n");
+}
+
+void printUsageAIMode() {
+	printf("유저가 심판, 컴퓨터가 투수 \n");
+	printf("유저는 중복되지않는 세 개의 숫자를 정한다. \n컴퓨터가 세 개의 숫자를 제시하면 정해둔 숫자와 비교해서 Strike 와 Ball의 개수를 적어준다. \n");
+	printf("-------- \n");
+	printf("입력 포맷 : strikeCount 공백 ballCount\n");
+	printf("예시 : 1 2\n");
 	printf("-------- \n");
 }
